@@ -1,0 +1,98 @@
+[FLEA_LASER]
+{
+	name=Laser;
+	rendertype=0;
+	lineofsight=1;
+	turret=1;
+	range=140;
+	reloadtime=0.4;
+	weaponvelocity=600;
+	areaofeffect=8;
+	burstrate=0.2;
+	soundtrigger=1;
+	energypershot=0;
+	soundstart=lasrfir1;
+	soundhit=lasrhit2;
+	firestarter=50;
+	beamtime=0.1;
+	beamlaser=1;
+	thickness=0.75;
+	corethickness=0.1;
+	laserflaresize=2;
+	targetmoveerror=0.1;
+	rgbcolor=1 1 0;
+	tolerance=10000;
+	explosiongenerator=custom:FLASH1yellow2;
+	impulsefactor=0.123;
+	impulseboost=0.123;
+	cratermult=0;
+	craterboost=0;
+	noselfdamage=1;
+	[DAMAGE]
+	{
+		default=24;
+		VTRANS=65;
+		L1FIGHTERS=65;
+		L2FIGHTERS=65;
+		L1BOMBERS=65;
+		L2BOMBERS=65;
+		GUNSHIPS=65;
+		HGUNSHIPS=65;
+		VRADAR=65;
+		VTOL=65;
+		L1SUBS=1;
+		L2SUBS=1;
+		L3SUBS=1;
+	}
+}
+[SUPERFLEA_LASER]
+{
+	name=SuperFlealaser;
+	cratermult=0.25;
+	craterboost=0.25;
+	noselfdamage=1;
+	beamweapon=1;
+	duration                = 0.25;
+      energypershot           = 0;
+      ballistic=1;
+      explosiongenerator=custom:FLASHBIGBUILDING;
+      fireStarter             = 30;
+      areaofeffect=1000;
+      impulseBoost            = 0;
+      impulseFactor           = 0.4;
+      interceptedByShieldType = 1;
+      lineOfSight             = 1;
+      lodDistance             = 10000;
+      noSelfDamage            = 1;
+      range                   = 5000;
+      reloadtime              = 0.5;
+      renderType              = 4;
+      rgbColor                = 2 0 2;
+      soundHit                = xplonuk1;
+      soundStart              = hlas;
+      soundTrigger            = 1;
+      sweepfire               = 0;
+      targetMoveError         = 0.1;
+      
+      thickness               = 8;
+      tolerance               = 10000;
+      turret                  = 1;
+      weaponVelocity          = 2000;
+	[DAMAGE]
+	{
+		default=300;
+		KROGOTH=200;
+		COMMANDERS=50000;
+		ORCONE=2000;
+		SEADRAGON=2800;
+		BLACKHYDRA=2800;
+		MECHS=400;
+		VULCBUZZ=3000;
+		L1SUBS=50;
+		L2SUBS=50;
+		L3SUBS=50;
+		FLAKBOATS=280;
+		JAMMERBOATS=280;
+		OTHERBOATS=280;
+	}
+}

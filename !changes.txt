@@ -1,0 +1,163 @@
++LuaRules/Gadgets/unit_spawner.lua "gameMode = 'normal'", added BA mexes to the list
++prefixed all movementClass values for chicken units with CHICK
++changed "category" and "onlyTargetCategory" for every chicken to fit BA
+
+Changed BA files:
+// --------------------
+// Armor.txt
+// ...
+
+[L1BOMBERS]
+{
+	...
+	chickenf=99;
+}
+
+[KROGOTH]
+{
+	...
+	chickenq=99;
+}
+
+[ELSE]
+{
+	...
+	chicken=99;
+	chicken_dodo=99;
+	chickena=99;
+	chickenc=99;
+	chickend=99;
+	chickennr=99;
+	chickens=99;
+	roost=99;
+}
+
+// --------------------
+// gamedata/resources.tdf
+// ...
+
+[resources]
+{
+	[graphics]
+	{
+		...
+		[projectiletextures]
+		{
+			sporetrail=GPL/sporetrail.tga;
+			blooddrop=PD/blooddrop.tga;
+			bloodblast=PD/bloodblast.tga;
+			bloodsplat=Pd/bloodsplat.tga;
+			blooddropwhite=PD/blooddropwhite.tga;
+			bloodblastwhite=PD/bloodblastwhite.tga;
+		}
+	}
+}
+
++replaced "dirt.tga" with "CC/dirt.png"
+
+// --------------------
+// gamedata/MOVEINFO.TDF
+// ...
+
+...
+[CLASS20]
+{
+	name=CHICKAKBOT2;
+	footprintx=2;
+	footprintz=2;
+	maxwaterdepth=5000;
+	maxwaterslope=50;
+	maxslope=36;
+	crushstrength=50;
+}
+
+[CLASS21]
+{
+	name=CHICKHKBOT4;
+	footprintx=4;
+	footprintz=4;
+	maxwaterdepth=22;
+	maxslope=36;
+	crushstrength=300;
+}
+
+[CLASS22]
+{
+	name=CHICKTKBOT3;
+	footprintx=3;
+	footprintz=3;
+	maxwaterdepth=22;
+	crushstrength=15;
+}
+
+[CLASS23]
+{
+	name=CHICKHOVER3;
+	footprintx=3;
+	footprintz=3;
+	maxslope=16;
+	badslope=16;
+	maxwaterslope=255;
+	badwaterslope=255;
+	crushstrength=25;
+}
+//unit_spawner.lua
+added MA mexes and metal makers
+
+@@ -58,17 +58,35 @@ local timeOfLastSpawn     = 0
+ gameMode                  = 'normal' --Spring.GetModOption("gamemode")
+ local tooltipMessage      = "Kill chickens and collect their eggs to get metal."
+ local mexes = {
+-  "armamex", 
+-  "armmex", 
+-  "armmoho", 
+-  "armuwmex", 
+-  "armuwmme", 
+-  "corexp", 
+-  "cormex",
+-  "cormexp",
+-  "cormoho",
+-  "coruwmex",
+-  "coruwmme",
++"armmex",--Ground Mexes and metal makers
++"cormex",
++"armmakr",
++"cormakr",--end level 1
++"armadvmex",
++"coradvmex",
++"armamaker",
++"coramaker",--end level 2
++"armmoho",--begin level 3
++"cormoho",
++"armmmkr",
++"cormmkr",--end level 3
++"armuwmex",--water Mexes and metal makers level1
++"coruwmex",
++"armfmkr",
++"corfmkr",--end level 1
++"armadvumex",--begin level 2
++"armauwmaker",
++"corauwmaker",
++"coradvumex",--end level 2
++"coruwmme",--level 3
++"armuwmme",
++"coruwmmm",
++"armuwmmm",--end level3
++--exploiters--
++"armtorpmex",
++"corexp",
++"armamex",
++"cortorpmex",
+ }
+ 
+ 
+@@ -723,7 +741,7 @@ function gadget:AllowCommand(unitID, unitDefID, teamID,
+     for _, mexName in ipairs(mexes) do
+       if (UnitDefNames[mexName].id == -cmdID) then
+         return false -- command was used
+-      end
++        end
+     end
+   end
+   return true  -- command was not used
+
