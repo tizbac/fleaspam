@@ -7,7 +7,6 @@ local unitName = "ARMFLEAB"
 
 local unitDef = {
   acceleration       = 0.5,
-  badTargetCategory  = "ANTIGATOR",
   bmcode             = "1",
   brakeRate          = 0.5,
   buildCostEnergy    = 322,
@@ -20,7 +19,7 @@ local unitDef = {
   canMove            = true,
   canPatrol          = true,
   canstop            = "1",
-  category           = "KBOT MOBILE WEAPON NOTAIR NOTSUB NOTSHIP LEVEL1 ALL",
+  category           = [[MOBILE SURFACE WEAPON NOTHOVERNOTVTOL NOTVTOL NOTSUB NOTSHIP ALL SURFACE]],
   corpse             = "DEAD",
   defaultmissiontype = "Standby",
   description        = "Fast Scout Kbot",
@@ -82,7 +81,7 @@ local unitDef = {
   weapons = {
     [1]  = {
       badTargetCategory  = "ANTIGATOR",
-      def                = "FLEA_LASER",
+      def                = "FLEA_LASER2",
     },
   },
 }
@@ -91,7 +90,7 @@ local unitDef = {
 --------------------------------------------------------------------------------
 
 local weaponDefs = {
-  FLEA_LASER = {
+  FLEA_LASER2 = {
 areaOfEffect       = 12,
     beamlaser          = 1,
     beamTime           = 0.12,

@@ -179,7 +179,9 @@ local teams = GetTeamList()
 local highestLevel = 0
 for _, teamID in ipairs(teams) do
   local teamLuaAI = GetTeamLuaAI(teamID)
+
   if (teamLuaAI and teamLuaAI ~= "") then
+    Spring.Echo(teamLuaAI.." -LAI- "..teamID)
     luaAI = teamLuaAI
     if (modes[teamLuaAI] > highestLevel) then -- get chicken ai with highest level
       highestLevel = modes[teamLuaAI]
@@ -188,6 +190,17 @@ for _, teamID in ipairs(teams) do
     computerTeams[teamID] = true
   else
     humanTeams[teamID]    = true
+    
+  end
+end
+
+
+
+Spring.Echo("Allyteams: ")
+for _, aID in ipairs(Spring.GetAllyTeamList()) do
+  Spring.Echo("Allyteam"..aID)
+  for _, a2ID in ipairs(Spring.GetTeamList(aID)) do
+    Spring.Echo("Allyteam-team:"..a2ID)
   end
 end
 
@@ -207,6 +220,8 @@ humanTeams[gaiaTeamID]    = nil
 if (modes[highestLevel] and luaAI == 0) then
   return false
 end
+
+Spring.Echo("Chicken team: "..chickenTeamID.." Gaia "..gaiaTeamID)
 
 SetGameRulesParam("chickenTeamID", chickenTeamID)
 --------------------------------------------------------------------------------
@@ -297,7 +312,7 @@ for unitName in pairs(chickenTypes) do
          unitCounts[(unitName)] = {count = 0, lastCount = 0}
    end
 end
-
+unitCounts["armlaba"] = {count = 0, lastCount = 0}
 local defendersDefs = {}
 for unitName in pairs(defenders) do 
   if UnitDefNames[unitName] ~= nil then
@@ -620,7 +635,12 @@ end
 
 
 local function SpawnBurrow(number)
-  
+  for _, teamID in ipairs(teams) do
+    if ( teamID ~= chickenTeamID ) then
+      Spring.SetAlly(teamID, chickenTeamID, false)
+      Spring.SetAlly(chickenTeamID, teamID, false)
+    end
+  end
   if (queenID) then -- don't spawn new burrows when queen is there
     return
   end
@@ -1081,7 +1101,7 @@ local function SpawnChickens()
 end
 
 local function chickenEvent(type, num, tech)
-  --Spring.Echo(type ,num, tech)
+  Spring.Echo(type ,num, tech)
 	SendToUnsynced("ChickenEvent", type, num, tech)
 end
 
@@ -1130,31 +1150,31 @@ local function updateSpawnQueen()
 		end
 		
 		if (modes[highestLevel] == EPIC) and (cenabled == 1) then
-			table.insert(spawnQueue, {burrow = queenID, unitName = "ve_chickenq", team = chickenTeamID})
-			table.insert(spawnQueue, {burrow = queenID, unitName = "ve_chickenq", team = chickenTeamID})
-			table.insert(spawnQueue, {burrow = queenID, unitName = "ve_chickenq", team = chickenTeamID})
-			table.insert(spawnQueue, {burrow = queenID, unitName = "ve_chickenq", team = chickenTeamID})
+			table.insert(spawnQueue, {burrow = queenID, unitName = "armfleaf", team = chickenTeamID})
+			table.insert(spawnQueue, {burrow = queenID, unitName = "armfleac", team = chickenTeamID})
+			table.insert(spawnQueue, {burrow = queenID, unitName = "armfleab", team = chickenTeamID})
+			table.insert(spawnQueue, {burrow = queenID, unitName = "armfleah", team = chickenTeamID})
 		end
 		
 		if (queenName == "epic_chickenq") then 
-			table.insert(spawnQueue, {burrow = queenID, unitName = "chickenr3", team = chickenTeamID})
-			table.insert(spawnQueue, {burrow = queenID, unitName = "chickenr3", team = chickenTeamID})
+			table.insert(spawnQueue, {burrow = queenID, unitName = "armfleah", team = chickenTeamID})
+			table.insert(spawnQueue, {burrow = queenID, unitName = "armfleah", team = chickenTeamID})
 		end
 		for i = 1,150,1 do
 			if (mRandom() < spawnChance) then
-				table.insert(spawnQueue, {burrow = queenID, unitName = "chickenh4", team = chickenTeamID})
+				table.insert(spawnQueue, {burrow = queenID, unitName = "armfleah", team = chickenTeamID})
 			end
 		end
 		for i = 1,10,1 do
 			if (mRandom() < spawnChance) then
-				table.insert(spawnQueue, {burrow = queenID, unitName = "chickenh1", team = chickenTeamID})
-				table.insert(spawnQueue, {burrow = queenID, unitName = "chickenh1b", team = chickenTeamID})
+				table.insert(spawnQueue, {burrow = queenID, unitName = "armfleaf", team = chickenTeamID})
+				table.insert(spawnQueue, {burrow = queenID, unitName = "armfleac", team = chickenTeamID})
 			end
 		end
 	else
 		if (mRandom() < (spawnChance/7.5)) then
 			for i = 1,mRandom(1,3),1 do
-				table.insert(spawnQueue, {burrow = queenID, unitName = "chickenh4", team = chickenTeamID})
+				table.insert(spawnQueue, {burrow = queenID, unitName = "armfleaf", team = chickenTeamID})
 			end
 		end
 	end
@@ -1297,7 +1317,7 @@ function gadget:GameFrame(n)
 		chickenCount = UpdateUnitCount()
 	end 
 end
-
+local spawnedqueenCount = 0
 function gadget:UnitDestroyed(unitID, unitDefID, unitTeam, attackerID)
 
   if (eggChance > 0) and ((bonusEggs > 0) or (EGG_DROPPER[unitDefID] and (mRandom() < eggChance))) then

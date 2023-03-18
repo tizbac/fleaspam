@@ -4,7 +4,7 @@
 
 maxChicken           = tonumber(Spring.GetModOptions().mo_maxchicken) or 400
 maxBurrows           = 20
-gracePeriod          = tonumber(Spring.GetModOptions().mo_graceperiod) or 10  -- no chicken spawn in this period, seconds
+gracePeriod          = tonumber(Spring.GetModOptions().mo_graceperiod) or 120  -- no chicken spawn in this period, seconds
 queenTime            = (Spring.GetModOptions().mo_queentime or 40) * 60 -- time at which the queen appears, seconds
 addQueenAnger        = tonumber(Spring.GetModOptions().mo_queenanger) or 1
 burrowSpawnType      = Spring.GetModOptions().mo_chickenstart or "avoid"
@@ -133,6 +133,19 @@ addWave(7,{})
 addWave(7,{}) 
 addWave(7,{}) 
 addWave(7,{}) 
+newWaveSquad[8] = {"80 armflead", "80 armfleae", "80 armfleaf"}
+addWave(8,{}) 
+addWave(8,{}) 
+addWave(8,{}) 
+addWave(8,{}) 
+addWave(8,{}) 
+newWaveSquad[9] = {"80 armflead", "80 armfleae", "80 armfleaf"}
+addWave(9,{}) 
+addWave(9,{}) 
+addWave(9,{}) 
+addWave(9,{}) 
+addWave(9,{}) 
+
 VERYEASY = "Chicken: Very Easy"
 EASY = "Chicken: Easy"
 NORMAL = "Chicken: Normal"

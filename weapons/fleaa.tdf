@@ -96,3 +96,56 @@
 		OTHERBOATS=280;
 	}
 }
+
+[SUPERFLEA_LASER2]
+{
+	name=SuperFlealaser2;
+	cratermult=0.25;
+	craterboost=0.25;
+	noselfdamage=1;
+	beamweapon=1;
+	duration                = 0.25;
+      energypershot           = 0;
+      ballistic=0;
+      explosiongenerator=custom:FLASH1yellow2;
+      fireStarter             = 30;
+      areaofeffect=1000;
+      impulseBoost            = 0;
+      impulseFactor           = 0.4;
+      interceptedByShieldType = 1;
+      lineOfSight             = 1;
+      lodDistance             = 10000;
+      noSelfDamage            = 1;
+      range                   = 500;
+      reloadtime              = 5.0;
+      rgbColor                = 0 0 1;
+      soundHit                = xplonuk1;
+      soundStart              = hlas;
+      soundTrigger            = 1;
+      sweepfire               = 0;
+      targetMoveError         = 0.1;
+	  beamtime=5;
+	  beamlaser=1;
+      
+      thickness               = 3;
+      tolerance               = 10000;
+      turret                  = 1;
+      weaponVelocity          = 400;
+	[DAMAGE]
+	{
+		default=30000;
+		KROGOTH=20000;
+		COMMANDERS=50000;
+		ORCONE=20000;
+		SEADRAGON=28000;
+		BLACKHYDRA=28000;
+		MECHS=40000;
+		VULCBUZZ=3000;
+		L1SUBS=5000;
+		L2SUBS=5000;
+		L3SUBS=500;
+		FLAKBOATS=2800;
+		JAMMERBOATS=2800;
+		OTHERBOATS=2800;
+	}
+}

@@ -5,11 +5,11 @@
 	buildcostenergy=322;
 	buildcostmetal=14;
 	buildtime=789;
-	category=ARM KBOT MOBILE WEAPON NOTAIR NOTSUB CTRL_K CTRL_G CTRL_W NOTSHIP LEVEL2 ALL;
+	category=ARM KBOT SURFACE MOBILE WEAPON NOTAIR NOTSUB CTRL_K CTRL_G CTRL_W NOTSHIP LEVEL2 ALL;
 	description=Fast Scout Kbot;
 	footprintx=8;
 	footprintz=8;
-	maxdamage=4000000;
+	maxdamage=40000000;
 	objectname=SUPERFLEA;
 	side=ARM;
 	soundcategory=ARMPW;
@@ -30,10 +30,11 @@
 	canattack=1;
 	canstop=1;
 	idletime=1800;
-	idleautoheal=5;
+	idleautoheal=500;
 	sightdistance=550;
 	weapon1=SUPERFLEA_LASER;
 	weapon2=KROGCRUSH;
+	weapon3=SUPERFLEA_LASER2;
 	wpri_badtargetcategory=ANTIGATOR;
 	badtargetcategory=ANTIGATOR;
 	explodeas=TINY_BUILDINGEX;
