@@ -51,8 +51,9 @@ local gameInfo
 local lastRulesUpdate = Spring.GetTimer()
 local waveY           = 800
 local waveSpeed       = 0.2
+local waveMessage     = nil
 local waveCount       = 0
-local waveTime
+local waveTime        = Spring.GetTimer()
 local enabled
 
 
@@ -167,6 +168,8 @@ local displayList = gl.CreateList( function()
 end)
 
 
+
+
 local function Draw()
   if (not enabled or not gameInfo) then
     return
@@ -201,8 +204,10 @@ local function Draw()
     local t = Spring.GetTimer()
     fontHandler.UseFont(waveFont)
     local waveY = viewSizeY - Spring.DiffTimers(t, waveTime)*waveSpeed*viewSizeY
+    
     if (waveY > 0) then
       for i, message in ipairs(waveMessage) do
+        --Spring.Echo("Draw "..waveY..","..Spring.DiffTimers(t, waveTime))
         fontHandler.DrawCentered(message, viewSizeX/2, waveY-WaveRow(i))
       end
     else
@@ -216,42 +221,21 @@ end
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
-
-local function MakeLine(chicken, n)
-  if (n <= 0) then
-    return
-  end
-  local humanName = UnitDefNames[chicken].humanName
-  local color = chickenColorSet[chicken]
-  return color..n.." "..humanName.."s"
-end
-
 function ChickenEvent(chickenEventArgs)
+ 
   if (chickenEventArgs.type == "wave") then
-    local chicken1Name       = chickenEventArgs[1]
-    local chicken2Name       = chickenEventArgs[2]
-    local chicken1Number     = chickenEventArgs[3]
-    local chicken2Number     = chickenEventArgs[4]
+    local count              = chickenEventArgs.number
+    Spring.Echo("Event:"..chickenEventArgs.type.." count "..count);
     if (gameInfo.armlabaCount < 1) then
       return
     end
+    waveTime = Spring.GetTimer()
     waveMessage    = {}
     waveCount      = waveCount + 1
-    waveMessage[1] = "Wave "..waveCount 
-    if (chicken1Name and chicken2Name and chicken1Name == chicken2Name) then
-      if (chicken2Number and chicken2Number) then
-        waveMessage[2] = 
-          MakeLine(chicken1Name, (chicken2Number+chicken1Number)*gameInfo.armlabaCount)
-      else
-        waveMessage[2] =
-          MakeLine(chicken1Name, chicken1Number*gameInfo.armlabaCount)
-      end
-    elseif (chicken1Name and chicken2Name) then
-      waveMessage[2] = MakeLine(chicken1Name, chicken1Number*gameInfo.armlabaCount)
-      waveMessage[3] = MakeLine(chicken2Name, chicken2Number*gameInfo.armlabaCount)
-    end
-    
+    waveMessage[1] = "Wave "..waveCount.." - \255\100\255\100"..count.." Fleas"
     waveTime = Spring.GetTimer()
+
+
     
   -- table.foreachi(waveMessage, print)
   -- local t = Spring.GetGameSeconds() 
@@ -260,10 +244,11 @@ function ChickenEvent(chickenEventArgs)
   elseif (chickenEventArgs.type == "burrowSpawn") then
     UpdateRules()
   elseif (chickenEventArgs.type == "queen") then
+    waveTime = Spring.GetTimer()
     waveMessage    = {}
 
     waveMessage[1] = "The SuperFlea is angered!"
-    waveTime = Spring.GetTimer()
+    
   end
 end
 

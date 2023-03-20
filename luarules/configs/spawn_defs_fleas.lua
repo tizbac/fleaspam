@@ -24,7 +24,7 @@ minBaseDistance      = 600
 maxBaseDistance      = 7200
 chickensPerPlayer    = 8
 spawnChance          = 0.5
-bonusTurret          = "armrl" -- Turret that gets spawned when a burrow dies
+bonusTurret          = "armllta" -- Turret that gets spawned when a burrow dies
 angerBonus           = 0.25
 expStep              = 0.0625
 lobberEMPTime        = 4
@@ -110,36 +110,48 @@ addWave(3,{})
 addWave(3,{}) 
 addWave(3,{}) 
 --t1.5/t2
-newWaveSquad[4] = {"5 armfleac", "20 armfleaa", "15 armfleab", "5 armflead"}
+newWaveSquad[4] = {"50 armfleac", "30 armfleaa", "50 armfleab", "90 armflead"}
 addWave(4,{}) 
 addWave(4,{}) 
 addWave(4,{}) 
 addWave(4,{}) 
 --t2 --wip beyond
-newWaveSquad[5] = {"20 armflead", "20 armfleab", "5 armfleae"}
+newWaveSquad[5] = {"120 armflead", "120 armfleab", "15 armfleae"}
 addWave(5,{}) 
 addWave(5,{}) 
 addWave(5,{}) 
 addWave(5,{}) 
-newWaveSquad[6] = {"20 armflead", "20 armfleae", "5 armfleaf"}
+newWaveSquad[6] = {"60 armflead", "80 armfleae", "23 armfleaf"}
 addWave(6,{}) 
 addWave(6,{}) 
 addWave(6,{}) 
 addWave(6,{}) 
 addWave(6,{}) 
-newWaveSquad[7] = {"20 armflead", "20 armfleae", "20 armfleaf"}
+newWaveSquad[7] = {"79 armflead", "57 armfleae", "120 armfleaf"}
 addWave(7,{}) 
 addWave(7,{}) 
 addWave(7,{}) 
 addWave(7,{}) 
 addWave(7,{}) 
-newWaveSquad[8] = {"80 armflead", "80 armfleae", "80 armfleaf"}
+addWave(7,{}) 
+addWave(7,{}) 
+addWave(7,{}) 
+newWaveSquad[8] = {"80 armflead", "80 armfleae", "180 armfleaf"}
 addWave(8,{}) 
 addWave(8,{}) 
 addWave(8,{}) 
 addWave(8,{}) 
 addWave(8,{}) 
-newWaveSquad[9] = {"80 armflead", "80 armfleae", "80 armfleaf"}
+addWave(8,{}) 
+addWave(8,{}) 
+addWave(8,{}) 
+newWaveSquad[9] = {"80 armflead", "80 armfleae", "180 armfleaf", "180 armfleah"}
+addWave(9,{}) 
+addWave(9,{}) 
+addWave(9,{}) 
+addWave(9,{}) 
+addWave(9,{}) 
+addWave(9,{}) 
 addWave(9,{}) 
 addWave(9,{}) 
 addWave(9,{}) 

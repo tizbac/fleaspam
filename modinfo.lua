@@ -1,10 +1,9 @@
 return 
 {
-  name="Flea Spam v3.0",
-  description="Flea Spam v3.0",
-  modtype=1,
+  name="Tech Annihilation + Flea Spam",
+  description="Tech Annihilation + Flea Spam",
   shortname='TA',
-  version='$VERSION',
+  version='v3.2',
   numdependencies=1,
   depend = { 'Tech Annihilation test-10952-b7f3858', },
   mutator='',

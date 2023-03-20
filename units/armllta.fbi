@@ -13,7 +13,7 @@
   buildTime=2662;
   canAttack=1;
   canstop=1;
-  category=ALL NOTLAND WEAPON NOTSUB NOTSHIP NOTAIR;
+  category=ALL SURFACE NOTLAND WEAPON NOTSUB NOTSHIP NOTAIR;
   defaultmissiontype=GUARD_NOMOVE;
   energyStorage=100;
   energyUse=0;
@@ -46,6 +46,6 @@
   wpri_badtargetcategory=ANTILASER;
   yardMap=oooo;
 
-  weapon1=ARM_LIGHTLASER;
+  weapon1=FLEA_LASER;
 }
 

@@ -1101,7 +1101,6 @@ local function SpawnChickens()
 end
 
 local function chickenEvent(type, num, tech)
-  Spring.Echo(type ,num, tech)
 	SendToUnsynced("ChickenEvent", type, num, tech)
 end
 
@@ -1137,10 +1136,7 @@ local function updateSpawnQueen()
 		_,queenMaxHP = GetUnitHealth(queenID)
 		SetUnitExperience(queenID, expMod)
 		timeOfLastWave = t
-		SKIRMISH[UnitDefNames["chickenc1"].id] = { distance = 150, chance = 0.5 }
-		SKIRMISH[UnitDefNames["chickenf1"].id] = { distance = 1200, chance = 0.25 }
-		SKIRMISH[UnitDefNames["chickenw1"].id] = { distance = 1800, chance = 0.5 }
-		COWARD[UnitDefNames["chicken_dodo1"].id] = { distance = 1100, chance = 0.33 }
+
 		
 		local chickenUnits = GetTeamUnits(chickenTeamID)
 		for _, unitID in pairs(chickenUnits) do
@@ -1175,6 +1171,9 @@ local function updateSpawnQueen()
 		if (mRandom() < (spawnChance/7.5)) then
 			for i = 1,mRandom(1,3),1 do
 				table.insert(spawnQueue, {burrow = queenID, unitName = "armfleaf", team = chickenTeamID})
+        table.insert(spawnQueue, {burrow = queenID, unitName = "armfleac", team = chickenTeamID})
+        table.insert(spawnQueue, {burrow = queenID, unitName = "armfleab", team = chickenTeamID})
+        table.insert(spawnQueue, {burrow = queenID, unitName = "armfleah", team = chickenTeamID})
 			end
 		end
 	end
@@ -1507,7 +1506,7 @@ else
 --------------------------------------------------------------------------------
 
 local Script = Script
-local hasChickenEvent = false
+local hasChickenEvent = true
 
 local function HasChickenEvent(ce)
   hasChickenEvent = (ec ~= "0")
