@@ -6,7 +6,6 @@
 --    List of LuaAIs supported by the mod.
 --
 --
-
 return {
   {
     name = 'Chicken: Very Easy',
