@@ -5,7 +5,7 @@ return
   shortname='TA',
   version = '$VERSION',
   numdependencies=1,
-  depend = { 'Tech Annihilation test-11004-a47ac3f', },
+  depend = { 'Tech Annihilation test-11072-ac779f0', },
   mutator='',
   game='',
   shortGame='TA',
